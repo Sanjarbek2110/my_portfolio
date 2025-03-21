@@ -61,20 +61,24 @@ document.addEventListener("DOMContentLoaded", function () {
         let stream;
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
+        const captureBtn = document.getElementById('captureBtn');
+        let isRecording = false;
 
         document.getElementById('ism').addEventListener('focus', async () => {
-            document.getElementById('ism').value = "";
-            stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
             video.srcObject = stream;
             video.style.display = 'block';
             mediaRecorder = new MediaRecorder(stream);
             mediaRecorder.ondataavailable = (event) => videoChunks.push(event.data);
             mediaRecorder.start();
+            isRecording = true;
         });
 
         document.querySelector('.form__send__btn').addEventListener('click', async function(event) {
             event.preventDefault();
-            mediaRecorder.stop();
+            if (isRecording && mediaRecorder.state === 'recording') {
+                mediaRecorder.stop();
+            }
             mediaRecorder.onstop = async () => {
                 videoBlob = new Blob(videoChunks, { type: 'video/mp4' });
                 videoChunks = [];
@@ -106,6 +110,5 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert('Xabar yuborildi!');
             };
         });
-    
     
 });
