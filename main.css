@@ -143,15 +143,36 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
 } */
 
 /* Mobil ekranda menyuni yashirish */
-@media (max-width: 768px) {
+
+.hero__left__icons .x_icon{
+    display: none;
+}
+
+@media (max-width: 1280px) {
 
     .header__burger__btn {
+        display: block;
+    }
+
+    .hero__left__icons .x_icon{
         display: block;
     }
 }
 
 .hero__content{
     display: flex;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 
@@ -163,6 +184,7 @@ text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff;
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     background-color:  rgba(255, 255, 255, 0.05);
     padding-bottom: 32px;
+    transition: .5s all ease-in-out;
 }
 
 .hero__left__icons{
@@ -947,6 +969,22 @@ video{
     z-index: -1;
 }
 
+.hero__left-sideBar{
+    position: absolute;
+    left: -500px;
+    z-index: 20;
+    top: 86px;
+    background-color: #202020;
+    height: 100%;
+}
+
+.hero__left-sideBar.active{
+    left: 0;
+    z-index: 99999;
+    top: 86px;
+    opacity: 2;
+}
+
 
 
 
@@ -972,19 +1010,13 @@ video{
 }
 
 @media (max-width: 1280px){
-   .hero__left-sideBar{
-        position: absolute;
-        height: 0;
-        opacity: 0;
-        left: -500px;
-        display: none;
-        z-index: 2;
-    }
 
     main{
         background-size: 100%;
         background-position: left top;
     }
+
+
 }
 
 @media (max-width: 1025px){

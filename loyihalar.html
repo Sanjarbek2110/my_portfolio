@@ -54,9 +54,9 @@
         <div class="container">
             <nav class="header__nav">
                 <div class="header__left">
-                    <button class="header__burger__btn">
-                        <img src="./images/hamburger_menu.svg" alt="Menu">
-                    </button>
+
+                    <img src="./images/hamburger_menu.svg" alt="Menu" class="header__burger__btn" id="menu-btn">
+
                     <a href="./index.html" class="header__logo">SANJARBEK.<span class="header__logo--green">UZ</span></p>
                 </div>
                 <ul class="header__list">
@@ -104,18 +104,25 @@
             <!-- <div class="container"> -->
                 <div class="hero__content">
 
-                    <div class="hero__left-sideBar">
+                    <!-- Qoraytiruvchi Overlay -->
+                    <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden"></div>
 
-                        <div class="hero__left__icons">
-                            <a href="./haqida.html">
-                                <img src="./images/arrow_left_icon.png" alt="">
-                            </a>
-                            <a href="./bog'lanish.html">
-                                <img src="./images/arrow_right_icon.png" alt="">
-                            </a>
-                            <a href="./index.html">
-                                <img src="./images/refresh_icon.png" alt="">
-                            </a>
+                    <div class="hero__left-sideBar" id="slidebar">
+
+                        <div class="hero__left__icons" style="gap: 0; justify-content: space-between;">
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <a href="./haqida.html">
+                                    <img src="./images/arrow_left_icon.png" alt="">
+                                </a>
+                                <a href="./bog'lanish.html">
+                                    <img src="./images/arrow_right_icon.png" alt="">
+                                </a>
+                                <a href="./index.html">
+                                    <img src="./images/refresh_icon.png" alt="">
+                                </a>
+                            </div>
+
+                            <img src="./images/close.png" alt="" style="cursor: pointer;" id="close-btn" class="x_icon">
                         </div>
 
                         <img src="./images/human_img.png" alt="" class="hero__left__human__img">
@@ -273,7 +280,7 @@
                                     </a>
 
                                     <div class="project__item_desc">
-                                        <div class="project__item_desc_title">Oziq-ovqat</div>
+                                        <div class="project__item_desc_title">Internet Magazin</div>
                                         <div class="project__item_desc_category">Yuqori
                                             <img src="./images/yuqori.png" alt="">
                                         </div>
@@ -321,9 +328,321 @@
                                     </a>
 
                                     <div class="project__item_desc">
-                                        <div class="project__item_desc_title">Transport</div>
+                                        <div class="project__item_desc_title">Ustachilik</div>
                                         <div class="project__item_desc_category">Past
                                             <img src="./images/past.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://rezonify-rs.netlify.app/">
+                                        <img src="./images/p1.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">UY</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://rubicon-rs.netlify.app/">
+                                        <img src="./images/p2.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Online Dokon</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://rowpro-rs.netlify.app/">
+                                        <img src="./images/p3.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Zal</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://accord-rs.netlify.app/">
+                                        <img src="./images/p4.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Turar Joy</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://nutrition-services.netlify.app/">
+                                        <img src="./images/p5.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Sog'lom Hayot</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://direct-life1.netlify.app/">
+                                        <img src="./images/p6.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Turar Joy</div>
+                                        <div class="project__item_desc_category">Past
+                                            <img src="./images/past.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://smith1.netlify.app/">
+                                        <img src="./images/p7.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Zal</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://proxy1.netlify.app/">
+                                        <img src="./images/p8.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Taminot</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://sanjarbek2110.github.io/3-oy-5-dars-uyga-vazifa/">
+                                        <img src="./images/p9.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Online Dokon</div>
+                                        <div class="project__item_desc_category">Past
+                                            <img src="./images/past.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://sanjarbek2110.github.io/3-oy-proekt2/">
+                                        <img src="./images/p10.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Material</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://sanjarbek2110.github.io/komanda/">
+                                        <img src="./images/p11.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Api</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://sanjarbek2110.github.io/3-oy-4-dars-uyga-vazifa/">
+                                        <img src="./images/p12.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Davlatlar</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
+                                        </div>
+                                    </div>
+
+                                    <div class="project__item__comments">
+                                        <div class="ites">#js</div>
+                                        <div class="ites">#swiper-js</div>
+                                        <div class="ites">#figma</div>
+                                        <div class="ites">#scss</div>
+                                        <div class="ites">#antdesign</div>
+                                        <div class="ites">#tailwindcss</div>
+                                        <div class="ites">#reactjs</div>
+                                        <div class="ites">#css</div>
+                                    </div>
+                                </div>
+
+                                <div class="project__item">
+                                    <a target="_blank" href="https://sanjarbek2110.github.io/tailwind_project/">
+                                        <img src="./images/p13.png" alt="">
+                                    </a>
+
+                                    <div class="project__item_desc">
+                                        <div class="project__item_desc_title">Biznes</div>
+                                        <div class="project__item_desc_category">Yuqori
+                                            <img src="./images/yuqori.png" alt="">
                                         </div>
                                     </div>
 
@@ -366,6 +685,7 @@
         </section>
     </main>
     
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>
