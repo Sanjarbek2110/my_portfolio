@@ -969,14 +969,7 @@ video{
     z-index: -1;
 }
 
-.hero__left-sideBar{
-    position: absolute;
-    left: -500px;
-    z-index: 20;
-    top: 86px;
-    background-color: #202020;
-    height: 100%;
-}
+
 
 .hero__left-sideBar.active{
     left: 0;
@@ -1010,6 +1003,15 @@ video{
 }
 
 @media (max-width: 1280px){
+    .hero__left-sideBar{
+        position: absolute;
+        left: -500px;
+        z-index: 20;
+        top: 86px;
+        background-color: #202020;
+        height: 100%;
+    }
+    
 
     main{
         background-size: 100%;
